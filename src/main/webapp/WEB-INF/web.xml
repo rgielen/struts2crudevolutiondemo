@@ -25,7 +25,7 @@
 
     <filter>
         <filter-name>struts2</filter-name>
-        <filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
    </filter>
     
    <!-- The Struts 2 filter should be mapped to ALL requests coming into the web application.  As a filter,
