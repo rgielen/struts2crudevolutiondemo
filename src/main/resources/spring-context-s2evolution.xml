@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+          http://www.springframework.org/schema/tx
+          http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="dataSource" ref="defaultDataSource"/>
+        <property name="annotatedClasses">
+            <list>
+                <value>net.itneering.demo.struts2evolution.model.Employee</value>
+                <value>net.itneering.demo.struts2evolution.model.Skill</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <value>
+                hibernate.hbm2ddl.auto=update
+                hibernate.connection.autocommit=false
+            </value>
+        </property>
+    </bean>
+
+    <!-- Hier durch andere Datasource / JDBC Treiber ersetzen, schon wirds "echt" persistent -->
+     <bean id="defaultDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+        <property name="url" value="jdbc:hsqldb:mem:aname"/>
+        <property name="username" value="sa"/>
+        <property name="password" value=""/>
+    </bean>
+
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager" autowire="byName"/>
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+
+    <bean id="genericDao" class="net.itneering.demo.struts2evolution.service.GenericDao" autowire="byName"/>
+
+    <bean id="employeeService" class="net.itneering.demo.struts2evolution.service.EmployeeService" autowire="byName"/>
+
+</beans>
