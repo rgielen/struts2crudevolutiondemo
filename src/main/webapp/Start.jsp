@@ -10,7 +10,7 @@
 		<h1>Personalverwaltung</h1>
         <hr>
             <ul>
-                <li><a href="<s:url action='editEmployee' includeParams="none" />">Mitarbeiter hinzufügen</a></li>
+                <li><a href="<s:url action='employee' includeParams="none" />">Mitarbeiter hinzufügen</a></li>
             </ul>
         <hr>
     </body>

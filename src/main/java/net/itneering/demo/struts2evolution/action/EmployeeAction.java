@@ -7,7 +7,14 @@ import com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator;
 import net.itneering.demo.struts2evolution.model.Employee;
 import net.itneering.demo.struts2evolution.service.EmployeeService;
 import org.apache.struts2.interceptor.validation.SkipValidation;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.InterceptorRef;
+import org.apache.struts2.convention.annotation.InterceptorRefs;
 
+@InterceptorRefs({
+    @InterceptorRef("paramsPrepareParamsStack")
+})
 public class EmployeeAction extends ActionSupport implements Preparable, ModelDriven {
 
     EmployeeService employeeService;
@@ -45,21 +52,20 @@ public class EmployeeAction extends ActionSupport implements Preparable, ModelDr
         }
     }
 
+    @Action(value = "saveEmployee",
+            results = {
+                    @Result(name = "success", location = "employee.action", type = "redirectAction",
+                            params={"model.id", "${id}"}),
+                    @Result(name = "input", location = "employee.jsp")
+            }
+    )
     public String save() throws Exception {
         employeeService.saveOrUpdate(employee);
         return SUCCESS;
     }
 
-    /**
-     * Statt execute eine etwas "sprechendere" edit Methode. Validierung darf für die Edit-Action nicht stattfinden, da
-     * sonst wäre die Neuanlage nicht möglich.
-     *
-     * @return immer {@link #SUCCESS}
-     *
-     * @throws Exception
-     */
     @SkipValidation
-    public String edit() throws Exception {
+    public String execute() throws Exception {
         return SUCCESS;
     }
 

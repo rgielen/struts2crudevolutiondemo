@@ -7,13 +7,16 @@
 
     <constant name="struts.devMode" value="true"/>
 
+<!--
     <package name="default" namespace="/" extends="struts-default">
         <action name="Start">
             <result>Start.jsp</result>
         </action>
     </package>
 
-    <!-- "abstract" package, to be extended -->
+    -->
+<!-- "abstract" package, to be extended -->
+<!--
     <package name="crudDefault" extends="default">
         <default-interceptor-ref name="paramsPrepareParamsStack"/>
     </package>
@@ -33,6 +36,7 @@
         </action>
 
     </package>
+-->
 
 
 </struts>
