@@ -16,6 +16,10 @@ import org.hibernate.annotations.FetchMode;
  */
 @Entity()
 @SequenceGenerator(name = "Employee_SEQ", sequenceName = "Employee_SEQ", allocationSize = 1)
+@NamedQueries( {
+        @NamedQuery( name = "Employee.getByName",
+                query = "select anrede,nachname from Employee emp where benutzername=:name")
+})
 public class Employee implements IdHavingEntity {
 
     Long id;

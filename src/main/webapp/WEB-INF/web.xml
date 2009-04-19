@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- The web.xml, also known as the deployment descriptor, defines a Java Servlet web application. 
-		 This document is a mandatory element of any web application and must reside within WEB-INF.  The 
-		 deployment descriptor defines all the servlets and servlet filters that belong to this web
-		 application. -->
-
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
-    <display-name>CRUD Applikation</display-name>
+    <display-name>Sample Struts 2.1 CRUD Applikation</display-name>
 
-		<!-- Declaration of the Struts 2 filter.  Since our entire web application will be a Struts 2
-					application, we will not have any other servlets or filters.  Of course, real Struts 2 
-					applications may also have other servlets or filters, but since we are doing only Struts 2
-					stuff in this example, we need only define the Struts 2 filter.  -->
-					 
-    <!-- Spring: zu lesende Spring Konigurationsdateien -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
@@ -26,15 +15,9 @@
     <filter>
         <filter-name>struts2</filter-name>
         <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
-   </filter>
+    </filter>
     
-   <!-- The Struts 2 filter should be mapped to ALL requests coming into the web application.  As a filter,
-				 it can let the non-struts requests pass through and they will arrive at which ever servlets to which
-				 they may be mapped.  Of course, this sample app has no other servlets, so we expect the filter to catch 
-				 everything.  When the filter recognizes a Struts 2 request, typically by the .action extension, the 
-				 normal filter chaining of a web application is aborted and the request is completely handled by
-				 the Struts 2 system. -->
-				 
+
     <filter-mapping>
         <filter-name>struts2</filter-name>
         <url-pattern>/*</url-pattern>
