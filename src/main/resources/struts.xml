@@ -21,7 +21,7 @@
     <package name="empoyeeManager" namespace="/" extends="crudDefault">
 
         <action name="edit*" class="net.itneering.demo.struts2evolution.action.{1}Action" method="edit">
-            <result>/WEB-INF/jsp/advanced/{1}/edit{1}.jsp</result>
+            <result>/WEB-INF/jsp/{1}/edit{1}.jsp</result>
         </action>
 
         <action name="save*" class="net.itneering.demo.struts2evolution.action.{1}Action" method="save">
@@ -29,7 +29,7 @@
                 <param name="actionName">edit{1}</param>
                 <param name="model.id">${id}</param>
             </result>
-            <result name="input">/WEB-INF/jsp/advanced/{1}/edit{1}.jsp</result>
+            <result name="input">/WEB-INF/jsp/{1}/edit{1}.jsp</result>
         </action>
 
     </package>
