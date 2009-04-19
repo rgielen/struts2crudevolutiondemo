@@ -1,28 +1,20 @@
-package net.itneering.demo.struts2evolution.action.entityaction;
+package net.itneering.demo.struts2evolution.action;
 
+import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator;
 import net.itneering.demo.struts2evolution.model.Employee;
 import net.itneering.demo.struts2evolution.service.EmployeeService;
-import net.itneering.demo.struts2evolution.action.AbstractCRUDAction;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 
-/**
- * EmployeeAction (Class per Modelentity Actions). Mit Annotation-basierter Validierung, ModelDriven. Wird durch die
- * Generische Konfiguration in struts.xml gematcht.
- *
- * @author Rene Gielen
- */
-public class EmployeeAction extends AbstractCRUDAction implements Preparable, ModelDriven {
+public class EmployeeAction extends ActionSupport implements Preparable, ModelDriven {
 
     EmployeeService employeeService;
     Employee employee = new Employee(); // Für ModelDriven sollte die Initialisierung stattfinden
 
     /**
-     * Wird durch Spring respektive Strut2-Spring-Integration per Property-Name injeziert
-     *
-     * @param employeeService
+     * will be injected
      */
     public void setEmployeeService( EmployeeService employeeService ) {
         this.employeeService = employeeService;
