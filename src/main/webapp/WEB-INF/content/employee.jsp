@@ -6,7 +6,6 @@
     <s:head />
 <body>
 
-<!-- Bitte beachten, dass fast alle Texte aus den Resource-Bundles der Anwendung kommen !!!!! -->
 <h1><s:text name="applicationText.editPerson"/></h1>
 
 <s:form action="saveEmployee">

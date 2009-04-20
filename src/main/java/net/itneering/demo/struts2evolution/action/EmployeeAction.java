@@ -5,7 +5,6 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator;
 import net.itneering.demo.struts2evolution.model.Employee;
-import net.itneering.demo.struts2evolution.model.IdHavingEntity;
 import net.itneering.demo.struts2evolution.service.EmployeeService;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.apache.struts2.convention.annotation.Action;
@@ -21,7 +20,8 @@ import java.util.List;
 public class EmployeeAction extends ActionSupport implements Preparable, ModelDriven {
 
     EmployeeService employeeService;
-    Employee employee = new Employee(); // Für ModelDriven sollte die Initialisierung stattfinden
+
+    Employee employee = new Employee();
     private List<Employee> list;
 
     /**
