@@ -54,15 +54,8 @@ public class EmployeeAction extends ActionSupport implements Preparable, ModelDr
         }
     }
 
-    @Action(value = "saveEmployee",
-            results = {
-                    @Result(name = "success", location = "employee", type = "redirectAction",
-                            params={"model.id", "${id}"}),
-                    @Result(name = "input", location = "employee.jsp")
-            }
-    )
-    public String save() throws Exception {
-        employeeService.saveOrUpdate(employee);
+    @SkipValidation
+    public String execute() throws Exception {
         return SUCCESS;
     }
 
@@ -75,8 +68,15 @@ public class EmployeeAction extends ActionSupport implements Preparable, ModelDr
         return SUCCESS;
     }
 
-    @SkipValidation
-    public String execute() throws Exception {
+    @Action(value = "saveEmployee",
+            results = {
+                    @Result(name = "success", location = "employee", type = "redirectAction",
+                            params={"model.id", "${id}"}),
+                    @Result(name = "input", location = "employee.jsp")
+            }
+    )
+    public String save() throws Exception {
+        employeeService.saveOrUpdate(employee);
         return SUCCESS;
     }
 
