@@ -12,11 +12,9 @@
             <result>/WEB-INF/content/menu.jsp</result>
         </action>
     </package>
+
 <!--
 
-    -->
-<!-- "abstract" package, to be extended -->
-<!--
     <package name="crudDefault" extends="default">
         <default-interceptor-ref name="paramsPrepareParamsStack"/>
     </package>
