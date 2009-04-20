@@ -23,6 +23,9 @@
 
     <s:submit value="Speichern"/>
 </s:form>
-<a href="<s:url action='Start' namespace="/" />">Zum Hauptmenü</a>
+
+<a href="<s:url action='employees' namespace="/" />">List</a>
+&nbsp;-&nbsp;
+<a href="<s:url action='menu' namespace="/" />">Mainmenu</a>
 </body>
 </html>

@@ -2,6 +2,7 @@ package net.itneering.demo.struts2evolution.model;
 
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.EmailValidator;
+import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
 
 import javax.persistence.*;
 import java.util.List;
@@ -20,7 +21,7 @@ import org.hibernate.annotations.FetchMode;
         @NamedQuery( name = "Employee.getByName",
                 query = "select anrede,nachname from Employee emp where benutzername=:name")
 })
-public class Employee implements IdHavingEntity {
+public class Employee implements IdHavingEntity<Long> {
 
     Long id;
     String anrede;
@@ -110,6 +111,7 @@ public class Employee implements IdHavingEntity {
     }
 
     @EmailValidator(message = "", key = "validation.email")
+    @RequiredStringValidator(message = "Eingabe benötigt", key = "validation.required")
     public String getEmail() {
         return email;
     }

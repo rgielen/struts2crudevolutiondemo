@@ -7,12 +7,12 @@
 
     <constant name="struts.devMode" value="true"/>
 
-<!--
-    <package name="default" namespace="/" extends="struts-default">
-        <action name="Start">
-            <result>Start.jsp</result>
+    <package name="default" extends="struts-default">
+        <action name="menu">
+            <result>/WEB-INF/content/menu.jsp</result>
         </action>
     </package>
+<!--
 
     -->
 <!-- "abstract" package, to be extended -->

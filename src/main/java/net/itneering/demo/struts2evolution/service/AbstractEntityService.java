@@ -8,6 +8,8 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
+import java.util.List;
+
 /**
  * AbstractEntityService.
  *
@@ -49,7 +51,7 @@ public abstract class AbstractEntityService {
     }
 
     @Transactional
-    public Long saveOrUpdate( IdHavingEntity modelObject ) {
+    public Long saveOrUpdate( IdHavingEntity<Long> modelObject ) {
         if (modelObject != null) {
             getGenericDao().saveOrUpdate(modelObject);
             return modelObject.getId();
@@ -59,7 +61,7 @@ public abstract class AbstractEntityService {
     }
 
     @Transactional
-    public Long update( IdHavingEntity modelObject ) {
+    public Long update( IdHavingEntity<Long> modelObject ) {
         if (modelObject != null) {
             getGenericDao().update(modelObject);
             return modelObject.getId();
@@ -69,7 +71,7 @@ public abstract class AbstractEntityService {
     }
 
     @Transactional
-    public Long save( IdHavingEntity modelObject ) {
+    public Long save( IdHavingEntity<Long> modelObject ) {
         if (modelObject != null) {
             getGenericDao().save(modelObject);
             return modelObject.getId();
@@ -102,11 +104,17 @@ public abstract class AbstractEntityService {
     @SuppressWarnings("unchecked")
     @Transactional
     public <T extends IdHavingEntity> T get( Long id ) {
-       if (id != null) {
-           return (T) getGenericDao().get(entityClass(), id);
-       } else {
-           return null;
-       }
-   }
+        if (id != null) {
+            return (T) getGenericDao().get(entityClass(), id);
+        } else {
+            return null;
+        }
+    }
+
+    @SuppressWarnings({"unchecked"})
+    public <T extends IdHavingEntity> List<T> findAll() {
+        return getCurrentSession().createQuery("from Employee order by nachname, vorname")
+                .list();
+    }
 
 }

@@ -3,14 +3,14 @@
 <html>
 
 	<head>
-    <title>Personalverwaltung</title>
+    <title>Employee Manager</title>
 	</head>
 
 	<body>
-		<h1>Personalverwaltung</h1>
+		<h1>Employee Manager</h1>
         <hr>
             <ul>
-                <li><a href="<s:url action='employee' includeParams="none" />">Mitarbeiter hinzufügen</a></li>
+                <li><a href="<s:url action='employees' includeParams="none" />">List Employees</a></li>
             </ul>
         <hr>
     </body>

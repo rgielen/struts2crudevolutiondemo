@@ -5,12 +5,15 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator;
 import net.itneering.demo.struts2evolution.model.Employee;
+import net.itneering.demo.struts2evolution.model.IdHavingEntity;
 import net.itneering.demo.struts2evolution.service.EmployeeService;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.InterceptorRefs;
+
+import java.util.List;
 
 @InterceptorRefs({
     @InterceptorRef("paramsPrepareParamsStack")
@@ -19,6 +22,7 @@ public class EmployeeAction extends ActionSupport implements Preparable, ModelDr
 
     EmployeeService employeeService;
     Employee employee = new Employee(); // Für ModelDriven sollte die Initialisierung stattfinden
+    private List<Employee> list;
 
     /**
      * will be injected
@@ -35,12 +39,10 @@ public class EmployeeAction extends ActionSupport implements Preparable, ModelDr
         this.employee = employee;
     }
 
-    /**
-     * Implementierung des Modeldriven-Paradigmas. Ausserdem Validierung durch Visitor, d.h. entnehme die
-     * Validierungs-Regeln der Modelklasse {@link Employee}.
-     *
-     * @return
-     */
+    public List<Employee> getList() {
+        return list;
+    }
+
     @VisitorFieldValidator(message = "", appendPrefix = false)
     public Object getModel() {
         return employee;
@@ -54,13 +56,22 @@ public class EmployeeAction extends ActionSupport implements Preparable, ModelDr
 
     @Action(value = "saveEmployee",
             results = {
-                    @Result(name = "success", location = "employee.action", type = "redirectAction",
+                    @Result(name = "success", location = "employee", type = "redirectAction",
                             params={"model.id", "${id}"}),
                     @Result(name = "input", location = "employee.jsp")
             }
     )
     public String save() throws Exception {
         employeeService.saveOrUpdate(employee);
+        return SUCCESS;
+    }
+
+    @Action(value = "employees",
+            results = {@Result(name = "success", location = "employee-list.jsp")}
+    )
+    @SkipValidation
+    public String list() throws Exception {
+        this.list = employeeService.findAll();
         return SUCCESS;
     }
 
