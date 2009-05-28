@@ -5,7 +5,9 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator;
 import net.itneering.demo.struts2evolution.model.Employee;
+import net.itneering.demo.struts2evolution.model.Skill;
 import net.itneering.demo.struts2evolution.service.EmployeeService;
+import net.itneering.demo.struts2evolution.service.SkillService;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
@@ -21,6 +23,7 @@ import java.util.List;
 public class EmployeeAction extends ActionSupport implements Preparable, ModelDriven {
 
     EmployeeService employeeService;
+    SkillService skillService;
 
     Employee employee = new Employee();
     private List<Employee> list;
@@ -31,6 +34,13 @@ public class EmployeeAction extends ActionSupport implements Preparable, ModelDr
      */
     public void setEmployeeService( EmployeeService employeeService ) {
         this.employeeService = employeeService;
+    }
+
+    /**
+     * will be injected
+     */
+    public void setSkillService( SkillService skillService ) {
+        this.skillService = skillService;
     }
 
     public Employee getEmployee() {
@@ -83,6 +93,10 @@ public class EmployeeAction extends ActionSupport implements Preparable, ModelDr
             employeeService.saveOrUpdate(employee);
         }
         return SUCCESS;
+    }
+
+    public List<Skill> getSkills() {
+        return skillService.findAll();   
     }
 
 }

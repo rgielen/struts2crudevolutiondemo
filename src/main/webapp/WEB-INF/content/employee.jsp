@@ -1,9 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="sx" uri="/struts-dojo-tags" %>
 
 <html>
     <head><title><s:text name="applicationText.editPerson"/></title></head>
-    <s:head />
+    <s:head/>
+    <sx:head/>
 <body>
 
 <h1><s:text name="applicationText.editPerson"/></h1>
@@ -15,11 +17,14 @@
     <s:textfield key="nachname"/>
     <s:textfield key="vorname" />
     <s:textfield key="email" />
+    <sx:datetimepicker key="geburtsDatum"/>
     <s:textfield key="jahreslohn" />
 
-    <s:select key="hauptSkill" size="2"
-              list="#{'JAVADEV':'Java Entwickler','DBDEV':'Datenbankentwickler'}" />
+    <s:select key="abteilung" size="2"
+              list="#{'LABS':'Forschung','PROD':'Produktion'}" />
 
+    <s:select label="%{getText('hauptSkill')}" name="hauptSkill.key" list="skills" listKey="key" listValue="anzeigeName"/>
+    
     <s:submit value="Speichern"/>
 </s:form>
 

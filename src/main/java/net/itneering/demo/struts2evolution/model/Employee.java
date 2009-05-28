@@ -1,14 +1,11 @@
 package net.itneering.demo.struts2evolution.model;
 
-import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.EmailValidator;
-import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
+import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
-
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 /**
  * Employee.
@@ -17,8 +14,8 @@ import org.hibernate.annotations.FetchMode;
  */
 @Entity()
 @SequenceGenerator(name = "Employee_SEQ", sequenceName = "Employee_SEQ", allocationSize = 1)
-@NamedQueries( {
-        @NamedQuery( name = "Employee.getByName",
+@NamedQueries({
+        @NamedQuery(name = "Employee.getByName",
                 query = "select anrede,nachname from Employee emp where benutzername=:name")
 })
 public class Employee implements IdHavingEntity<Long> {
@@ -30,8 +27,10 @@ public class Employee implements IdHavingEntity<Long> {
     String benutzername;
     String passwort;
     Integer jahreslohn;
-    String hauptSkill;
+    String abteilung;
+    Skill hauptSkill;
     String email;
+    Date geburtsDatum;
     List<Skill> skills;
 
     public Employee() {
@@ -102,11 +101,20 @@ public class Employee implements IdHavingEntity<Long> {
         this.jahreslohn = jahreslohn;
     }
 
-    public String getHauptSkill() {
+    public String getAbteilung() {
+        return abteilung;
+    }
+
+    public void setAbteilung( String abteilung ) {
+        this.abteilung = abteilung;
+    }
+
+    @ManyToOne
+    public Skill getHauptSkill() {
         return hauptSkill;
     }
 
-    public void setHauptSkill( String hauptSkill ) {
+    public void setHauptSkill( Skill hauptSkill ) {
         this.hauptSkill = hauptSkill;
     }
 
@@ -120,13 +128,13 @@ public class Employee implements IdHavingEntity<Long> {
         this.email = email;
     }
 
-    @OneToMany( fetch = FetchType.EAGER )
-    @Fetch(value = FetchMode.JOIN)
-    public List<Skill> getSkills() {
-        return skills;
+    @Temporal(TemporalType.DATE)
+    public Date getGeburtsDatum() {
+        return geburtsDatum;
     }
 
-    public void setSkills( List<Skill> skills ) {
-        this.skills = skills;
+    public void setGeburtsDatum( Date geburtsDatum ) {
+        this.geburtsDatum = geburtsDatum;
     }
+
 }
