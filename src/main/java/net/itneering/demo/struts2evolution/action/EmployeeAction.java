@@ -15,7 +15,8 @@ import org.apache.struts2.convention.annotation.InterceptorRefs;
 import java.util.List;
 
 @InterceptorRefs({
-    @InterceptorRef("paramsPrepareParamsStack")
+        @InterceptorRef("transactionInterceptor"),
+        @InterceptorRef("paramsPrepareParamsStack")
 })
 public class EmployeeAction extends ActionSupport implements Preparable, ModelDriven {
 
@@ -23,6 +24,7 @@ public class EmployeeAction extends ActionSupport implements Preparable, ModelDr
 
     Employee employee = new Employee();
     private List<Employee> list;
+    private int empHash;
 
     /**
      * will be injected
@@ -51,6 +53,7 @@ public class EmployeeAction extends ActionSupport implements Preparable, ModelDr
     public void prepare() throws Exception {
         if (employee != null && employee.getId() != null) {
             this.employee = employeeService.get(employee.getId());
+            this.empHash = employee.hashCode();
         }
     }
 
@@ -71,12 +74,14 @@ public class EmployeeAction extends ActionSupport implements Preparable, ModelDr
     @Action(value = "saveEmployee",
             results = {
                     @Result(name = "success", location = "employee", type = "redirectAction",
-                            params={"model.id", "${id}"}),
+                            params = {"model.id", "${id}"}),
                     @Result(name = "input", location = "employee.jsp")
             }
     )
     public String save() throws Exception {
-        employeeService.saveOrUpdate(employee);
+        if (employee.hashCode() != empHash) {
+            employeeService.saveOrUpdate(employee);
+        }
         return SUCCESS;
     }
 

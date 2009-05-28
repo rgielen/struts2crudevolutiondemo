@@ -11,6 +11,7 @@
         <hr>
             <ul>
                 <li><a href="<s:url action='employees' includeParams="none" />">List Employees</a></li>
+                <li><a href="<s:url action='skills' includeParams="none" />">List Skills</a></li>
             </ul>
         <hr>
     </body>

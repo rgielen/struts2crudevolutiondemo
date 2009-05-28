@@ -36,8 +36,9 @@ http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
     <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager" autowire="byName"/>
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 
-    <bean id="genericDao" class="net.itneering.demo.struts2evolution.service.GenericDao" autowire="byName"/>
-
+    <bean id="sessionProvider" class="net.itneering.demo.struts2evolution.helper.SessionProvider" autowire="byName"/>
+        
     <bean id="employeeService" class="net.itneering.demo.struts2evolution.service.EmployeeService" autowire="byName"/>
+    <bean id="skillService" class="net.itneering.demo.struts2evolution.service.SkillService" autowire="byName"/>
 
 </beans>

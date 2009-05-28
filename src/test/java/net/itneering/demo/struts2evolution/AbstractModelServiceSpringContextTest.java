@@ -1,10 +1,9 @@
 package net.itneering.demo.struts2evolution;
 
-import net.itneering.demo.struts2evolution.service.GenericDao;
 import org.springframework.test.AbstractSingleSpringContextTests;
 import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 /**
@@ -18,8 +17,6 @@ public abstract class AbstractModelServiceSpringContextTest extends AbstractSing
             "classpath:/spring-context-s2evolution.xml",
             "classpath:/spring-test-context.xml"
     };
-
-    GenericDao genericDao;
 
     PlatformTransactionManager transactionManager;
     TransactionStatus txStatus;
@@ -75,11 +72,6 @@ public abstract class AbstractModelServiceSpringContextTest extends AbstractSing
     @Override
     protected String[] getConfigLocations() {
         return CONTEXTFILES_TO_LOAD;
-    }
-
-    protected void onSetUp() throws Exception {
-        super.onSetUp();
-        this.genericDao = (GenericDao) getApplicationContext().getBean("genericDao");
     }
 
 }

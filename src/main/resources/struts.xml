@@ -6,15 +6,31 @@
 <struts>
 
     <constant name="struts.devMode" value="true"/>
-    <constant name="struts.convention.classes.reload" value="true" />
+    <constant name="struts.convention.classes.reload" value="false" />
 
-    <package name="default" extends="struts-default">
+    <package name="demo-default" extends="struts-default">
+
+        <interceptors>
+            <interceptor name="transactionInterceptor"
+                         class="net.itneering.demo.struts2evolution.interceptor.TransactionalSessionInterceptor"/>
+
+            <interceptor-stack name="defaultDemoStack">
+                <interceptor-ref name="transactionInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="defaultDemoStack"/>
+
         <action name="menu">
             <result>/WEB-INF/content/menu.jsp</result>
         </action>
+
     </package>
 
-<!--
+    <constant name="struts.convention.default.parent.package" value="demo-default"/>
+
+    <!--
 
     <package name="crudDefault" extends="default">
         <default-interceptor-ref name="paramsPrepareParamsStack"/>
