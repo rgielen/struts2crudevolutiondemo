@@ -30,28 +30,5 @@
 
     <constant name="struts.convention.default.parent.package" value="demo-default"/>
 
-    <!--
-
-    <package name="crudDefault" extends="default">
-        <default-interceptor-ref name="paramsPrepareParamsStack"/>
-    </package>
-
-    <package name="empoyeeManager" namespace="/" extends="crudDefault">
-
-        <action name="edit*" class="net.itneering.demo.struts2evolution.action.{1}Action" method="edit">
-            <result>/WEB-INF/jsp/{1}/edit{1}.jsp</result>
-        </action>
-
-        <action name="save*" class="net.itneering.demo.struts2evolution.action.{1}Action" method="save">
-            <result name="success" type="redirectAction" >
-                <param name="actionName">edit{1}</param>
-                <param name="model.id">${id}</param>
-            </result>
-            <result name="input">/WEB-INF/jsp/{1}/edit{1}.jsp</result>
-        </action>
-
-    </package>
--->
-
 
 </struts>

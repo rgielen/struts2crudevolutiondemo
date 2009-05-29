@@ -12,7 +12,10 @@
 
 <s:form action="saveEmployee">
     <s:hidden name="id" />
-    <s:select key="anrede" list="{'Herr','Frau'}" headerKey="''" headerValue="%{getText('applicationText.choseValue')}"/>
+    <s:select key="anrede"
+              list="{'Herr','Frau'}"
+              headerKey="''"
+              headerValue="%{getText('applicationText.choseValue')}"/>
 
     <s:textfield key="nachname"/>
     <s:textfield key="vorname" />
@@ -23,7 +26,11 @@
     <s:select key="abteilung" size="2"
               list="#{'LABS':'Forschung','PROD':'Produktion'}" />
 
-    <s:select label="%{getText('hauptSkill')}" name="hauptSkill.key" list="skills" listKey="key" listValue="anzeigeName"/>
+    <s:select label="%{getText('hauptSkill')}"
+              name="hauptSkill.key"
+              list="skills"
+              listKey="key"
+              listValue="anzeigeName"/>
     
     <s:submit value="Speichern"/>
 </s:form>
