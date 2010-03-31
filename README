@@ -6,11 +6,11 @@ This is a basic demo for putting together a layered CRUD application with Struts
 To run, install Apache Maven (http://maven.apache.org/download.html#Installation) and type on a command line shell:
 > mvn jetty:run
 
-The provided source code ist licensed under the terms of Apache License Version 2.0. See http://www.apache.org/licenses/ for Details.
+The provided source code is licensed under the terms of Apache License Version 2.0. See http://www.apache.org/licenses/ for Details.
 
 
 If you have any questions, feel free to ask.
 
-René Gielen
+Rene Gielen
 rgielen at apache dot org
 http://twitter.com/rgielen
