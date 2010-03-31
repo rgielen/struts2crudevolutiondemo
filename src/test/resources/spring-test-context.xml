@@ -7,4 +7,13 @@ http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
           http://www.springframework.org/schema/tx
           http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
 
+
+    <!-- In-memory database for testing mode -->
+    <bean id="defaultDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+        <property name="url" value="jdbc:hsqldb:mem:aname"/>
+        <property name="username" value="sa"/>
+        <property name="password" value=""/>
+    </bean>
+
 </beans>

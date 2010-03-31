@@ -9,32 +9,61 @@
     <version>1.0.0-SNAPSHOT</version>
     <name>CRUD Demo Application</name>
 
-    <description>Multi-Modul Bespielappikation für Struts2 Kurs</description>
+    <description>Example Struts2 application demonstrating Hibernate/Spring based CRUD</description>
+
+    <properties>
+        <struts2.version>2.1.8.1</struts2.version>
+        <spring.version>2.5.6</spring.version>
+    </properties>
 
     <dependencies>
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>[2.0.8,2.5)</version>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-core</artifactId>
+            <version>${struts2.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-spring-plugin</artifactId>
+            <version>${struts2.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-convention-plugin</artifactId>
+            <version>${struts2.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-dojo-plugin</artifactId>
+            <version>${struts2.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-hibernate3</artifactId>
-            <version>[2.0.8,2.5)</version>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-support</artifactId>
-            <version>[2.0.8,2.5)</version>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
-            <version>[2.0.8,2.5)</version>
+            <version>${spring.version}</version>
         </dependency>
 
         <dependency>
@@ -46,55 +75,32 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate</artifactId>
-            <version>3.2.5.ga</version>
+            <version>3.2.7.ga</version>
         </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-annotations</artifactId>
-            <version>3.3.0.ga</version>
+            <version>3.4.0.GA</version>
         </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>3.3.1.ga</version>
+            <version>3.4.0.GA</version>
+        </dependency>
+
+        <!-- Needed for Hibernate -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.4.2</version>
         </dependency>
 
         <dependency>
             <groupId>hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>1.8.0.7</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.struts</groupId>
-            <artifactId>struts2-core</artifactId>
-            <version>2.1.7-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.struts</groupId>
-            <artifactId>struts2-spring-plugin</artifactId>
-            <version>2.1.7-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.struts</groupId>
-            <artifactId>struts2-convention-plugin</artifactId>
-            <version>2.1.7-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.struts</groupId>
-            <artifactId>struts2-dojo-plugin</artifactId>
-            <version>2.1.7-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>2.0.8</version>
         </dependency>
 
         <dependency>
@@ -116,13 +122,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.1</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-mock</artifactId>
-            <version>2.0.8</version>
             <scope>test</scope>
         </dependency>
 

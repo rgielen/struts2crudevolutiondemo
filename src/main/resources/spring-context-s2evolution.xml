@@ -24,7 +24,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
         </property>
     </bean>
 
-    <!-- Hier durch andere Datasource / JDBC Treiber ersetzen, schon wirds "echt" persistent -->
+     <!-- The default datasource is a HSQL in-memory database for now -->
      <bean id="defaultDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
         <property name="url" value="jdbc:hsqldb:mem:aname"/>
