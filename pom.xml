@@ -12,7 +12,7 @@
     <description>Example Struts2 application demonstrating Hibernate/Spring based CRUD</description>
 
     <properties>
-        <struts2.version>2.1.8.1</struts2.version>
+        <struts2.version>2.5.26</struts2.version>
         <spring.version>2.5.6</spring.version>
     </properties>
 
